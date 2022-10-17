@@ -1,0 +1,35 @@
+.mainContainer {
+  position: relative;
+}
+.container {
+  position: absolute;
+  top: 2%;
+  right: 10%;
+  z-index: 10;
+}
+.listCont {
+  display: flex;
+  list-style-type: none;
+}
+.listItem {
+  margin-left: 20px;
+}
+.burgerIcon {
+  position: absolute;
+  top: 1%;
+  left: 3%;
+}
+.drawerTwo {
+  display: none;
+}
+@media (min-width: 940px) {
+  .drawerOne {
+    display: none;
+  }
+  .drawerTwo {
+    display: flex;
+  }
+}
+
+ /* #FAFBFB"
+#20232A #33373E #", */
