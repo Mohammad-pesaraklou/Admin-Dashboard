@@ -1,28 +1,45 @@
 .mainContainer {
   position: relative;
+  /* height: 100px; */
 }
 .container {
   position: absolute;
-  top: 2%;
-  right: 10%;
+  top:3%;
+  right: 14%;
   z-index: 10;
 }
 .listCont {
   display: flex;
   list-style-type: none;
+  position: relative;
+  gap: 30px;
 }
 .listItem {
-  margin-left: 20px;
+  /* margin-left: 30px; */
 }
+
+.profImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0%;
+}
+
 .burgerIcon {
   position: absolute;
-  top: 1%;
+  top: 2%;
   left: 3%;
+}
+.test {
+  position: absolute;
+  top: 15%;
+  right: -25%;
 }
 .drawerTwo {
   display: none;
 }
-@media (min-width: 940px) {
+@media (min-width: 1840px) {
   .drawerOne {
     display: none;
   }
@@ -30,6 +47,20 @@
     display: flex;
   }
 }
-
- /* #FAFBFB"
+.ItemMenu {
+  margin-top: 10px;
+  margin-left: 20px;
+  color: gray;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.ItemChildMenu {
+  margin: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+}
+/* #FAFBFB"
 #20232A #33373E #", */

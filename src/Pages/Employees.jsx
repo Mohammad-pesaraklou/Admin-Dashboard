@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Stacked = () => {
+const Employees = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Stacked = () => {
     );
 };
 
-export default Stacked;
+export default Employees;

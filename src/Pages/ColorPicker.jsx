@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Stacked = () => {
+const ColorPicker = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Stacked = () => {
     );
 };
 
-export default Stacked;
+export default ColorPicker;

@@ -1,162 +1,91 @@
-import React, { useState } from 'react';
-import { Box, Divider, Drawer, SpeedDial, SpeedDialAction, SpeedDialIcon, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
-// icons
-import { SiShopware } from 'react-icons/si'
-import { CiSettings } from 'react-icons/ci'
-import IconButton from '@mui/material/IconButton';
-import { MdOutlineLocalGroceryStore } from 'react-icons/md';
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { AiOutlineHome } from 'react-icons/ai'
-import { MdOutlineAccountCircle } from 'react-icons/md'
-import { MdOutlineAssignmentInd } from 'react-icons/md'
-import { FcAbout } from 'react-icons/fc'
-import { BiLogOut } from 'react-icons/bi'
-import { VscSignIn } from 'react-icons/vsc'
-// styles
-import styles from '../Styles/Navbar.module.css'
-import styled from '@emotion/styled';
+import React, { useEffect } from 'react';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { FiShoppingCart } from 'react-icons/fi';
+import { BsChatLeft } from 'react-icons/bs';
+import { RiNotification3Line } from 'react-icons/ri';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import Chat from './Chat'
+import Cart from './Cart'
+import Notifications from './Notifications'
+import UserProfile from './UserProfile'
+import avatar from '../data/avatar.jpg';
+import { useStateContext } from '../contexts/ContextProvider';
+const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
+    <TooltipComponent content={title} position="BottomCenter">
+        <button
+            type="button"
+            onClick={() => customFunc()}
+            style={{ color }}
+            className="relative text-xl rounded-full p-3 hover:bg-light-gray"
+        >
+            <span
+                style={{ background: dotColor }}
+                className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
+            />
+            {icon}
+        </button>
+    </TooltipComponent>
+);
 
 const Navbar = () => {
+    const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
 
-    const actions = [
-        { icon: <SiShopware />, name: 'Copy' },
-        { icon: <SiShopware />, name: 'Save' },
-        { icon: <SiShopware />, name: 'Print' },
-        { icon: <SiShopware />, name: 'Share' },
-    ];
-    const [toggle, setToggle] = useState();
-    const [open, setOpen] = useState();
+    useEffect(() => {
+        const handleResize = () => setScreenSize(window.innerWidth);
 
-    const drawerWidth = 240;
+        window.addEventListener('resize', handleResize);
 
-    const drawerWidth2 = 300;
+        handleResize();
 
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-    const handler = () => {
-        setToggle(!toggle)
-    }
-    const OpenHandler = () => {
-        setToggle(!open)
-    }
+    useEffect(() => {
+        if (screenSize <= 900) {
+            setActiveMenu(false);
+        } else {
+            setActiveMenu(true);
+        }
+    }, [screenSize]);
+
+    const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
     return (
-        <div className={styles.mainContainer}>
-            <div>
-                <Box sx={{ height: '98vh', transform: 'translateZ(0px)', flexGrow: 1 }}>
-                    <SpeedDial
-                        ariaLabel="SpeedDial"
-                        sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                        icon={<CiSettings fontSize={'35px'} />}
+        <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
+
+            <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
+            <div className="flex">
+                <NavButton title="Cart" customFunc={() => handleClick('cart')} color={currentColor} icon={<FiShoppingCart />} />
+                <NavButton title="Chat" dotColor="#03C9D7" customFunc={() => handleClick('chat')} color={currentColor} icon={<BsChatLeft />} />
+                <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
+                <TooltipComponent content="Profile" position="BottomCenter">
+                    <div
+                        className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+                        onClick={() => handleClick('userProfile')}
                     >
-                        {actions.map((action) => (
-                            <SpeedDialAction
-                                key={action.name}
-                                icon={action.icon}
-                                tooltipTitle={action.name}
-                            />
-                        ))}
-                    </SpeedDial>
-                </Box>
-            </div>
-            <div className={styles.container}>
-                <ul className={styles.listCont}>
-                    <li className={styles.listItem}>Hello</li>
-                    <li className={styles.listItem}>Mellow</li>
-                    <li className={styles.listItem}>jellow</li>
-                </ul>
-            </div>
-            <div className={styles.drawerOne}>
-                <Box >
-                    <GiHamburgerMenu
-                        color="inherit"
-                        className={styles.burgerIcon}
-                        style={{ fontSize: '33px' }}
-                        onClick={OpenHandler}
+                        <img
+                            className="rounded-full w-8 h-8"
+                            src={avatar}
+                            alt="user-profile"
+                        />
+                        <p>
+                            <span className="text-gray-400 text-14">Hi,</span>{' '}
+                            <span className="text-gray-400 font-bold ml-1 text-14">
+                                Michael
+                            </span>
+                        </p>
+                        <MdKeyboardArrowDown className="text-gray-400 text-14" />
+                    </div>
+                </TooltipComponent>
 
-                    />
-                </Box>
-                <Drawer
-                    sx={{
-                        width: drawerWidth,
-                        flexShrink: 0,
-                        '& .MuiDrawer-paper': {
-                            width: drawerWidth,
-                        },
-
-                    }}
-                    variant="persistent"
-                    anchor="left"
-                    open={toggle}
-                >
-                    <DrawerHeader>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                            <SiShopware fontSize={"25px"} />
-                            <Typography variant='h5'>Shoppy</Typography>
-                        </div>
-                        <IconButton onClick={handler} sx={{ color: 'black' }}>
-                            {window.direction === 'rtl' ? <BsChevronLeft /> : <BsChevronRight style={{ fontSize: "30px" }} />}
-                        </IconButton>
-                    </DrawerHeader>
-                    <Divider />
-                    <Typography variant="h5" fontWeight={600} p={"5px 15px"} sx={{ p: 2 }}>
-                        Menu
-                    </Typography>
-                    <Box>
-                        <ul className={styles.menuList}>
-                            <Link className={styles.hMenuLi} to="/">
-                                <AiOutlineHome fontSize='22px' />
-                                <li className={styles.itemMenu}>Home</li>
-                            </Link>
-                            <div >
-                            </div>
-                            <Link className={styles.hMenuLi} to="/aboutUs">
-                                <FcAbout fontSize='22px' />
-                                <li className={styles.itemMenu}>About Us</li>
-                            </Link>
-                        </ul>
-                    </Box>
-
-                </Drawer>
-            </div>
-            <div className={styles.drawerTwo}>
-                <Drawer
-                    sx={{
-                        width: drawerWidth2,
-                        flexShrink: 0,
-                        '& .MuiDrawer-paper': {
-                            width: drawerWidth2,
-                            boxSizing: 'border-box',
-                        },
-                    }}
-                    variant="permanent"
-                    anchor="left"
-                >
-                    <DrawerHeader>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                            <SiShopware fontSize={"25px"} />
-                            <Typography variant='h5'>Shoppy</Typography>
-                        </div>
-                        <IconButton onClick={handler} sx={{ color: 'black' }}>
-                            {window.direction === 'rtl' ? <BsChevronLeft /> : <BsChevronRight style={{ fontSize: "30px" }} />}
-                        </IconButton>
-                    </DrawerHeader>
-                    <Divider />
-
-
-                </Drawer>
+                {isClicked.cart && (<Cart />)}
+                {isClicked.chat && (<Chat />)}
+                {isClicked.notification && (<Notifications />)}
+                {isClicked.userProfile && (<UserProfile />)}
             </div>
         </div>
     );
 };
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '15px 10px',
-
-}));
 
 export default Navbar;
