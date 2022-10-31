@@ -1,0 +1,25 @@
+.container {
+  background-color: #313f7f;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  /* position: absolute;
+  bottom: 0%; */
+}
+.iconContainer{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+.links{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+}
+.copyContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

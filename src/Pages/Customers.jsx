@@ -1,7 +1,8 @@
 import React from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, Edit, Toolbar, Sort, Filter } from '@syncfusion/ej2-react-grids';
-
-import { customersData, contextMenuItems, customersGrid } from '../data/dummy';
+// data
+import { customersData, customersGrid } from '../data/dummy';
+// component
 import Header from '../Components/Header';
 
 

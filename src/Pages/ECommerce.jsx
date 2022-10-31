@@ -27,6 +27,8 @@ import { useStateContext } from '../contexts/ContextProvider';
 
 
 const ECommerce = () => {
+
+    const { currentColor } = useStateContext()
     return (
         <Container>
             <div className='mt-28'>
@@ -36,8 +38,8 @@ const ECommerce = () => {
                         <p className="font-bold text-2xl text-gray-400">Earnings</p>
                         <p className="text-2xl ">$82,178.38</p>
                     </div>
-                    <div className=''>
-                        <Button variant="contained" color='primary'>
+                    <div className='mt-5'>
+                        <Button variant="contained" sx={{ backgroundColor: currentColor }}>
                             Download
                         </Button>
                     </div>
@@ -46,7 +48,7 @@ const ECommerce = () => {
                     <div className='flex ml-16 flex-wrap'>
                         {
                             earningData.map((item) => (
-                                <div key={item.title} className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+                                <div key={item.title} className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 m-5 text-center p-4 pt-9 rounded-2xl ">
                                     <button
                                         type="button"
                                         style={{ color: item.iconColor, backgroundColor: item.iconBg }}
@@ -109,8 +111,9 @@ const ECommerce = () => {
                                         type="Line"
                                         height="80px"
                                         width="250px"
+                                        currentColor={currentColor}
                                         data={SparklineAreaData}
-                                        color='darkblue'
+                                        color={currentColor}
                                     />
                                 </div>
                                 <div className="mt-10">
