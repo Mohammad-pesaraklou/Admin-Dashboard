@@ -10,6 +10,9 @@ const initialState = {
 };
 
 export const ContextProvider = ({ children }) => {
+  const [Profile, setProfile] = useState(false);
+  const [chat, setChat] = useState(false);
+  const [notif, setNotif] = useState(false);
   const [screenSize, setScreenSize] = useState(undefined);
   const [activeMenu, setActiveMenu] = useState(true);
   const [currentColor, setCurrentColor] = useState("#03C9D7");
@@ -27,8 +30,12 @@ export const ContextProvider = ({ children }) => {
     localStorage.setItem("colorMode", color);
   };
 
-  const handleClick = (clicked) =>
-    setIsClicked({ ...initialState, [clicked]: true });
+  const handleClick = (clicked) => (
+    setIsClicked({ ...initialState, [clicked]: true }),
+    setProfile(true),
+    setChat(true),
+    setNotif(true)
+  );
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -50,6 +57,12 @@ export const ContextProvider = ({ children }) => {
         setColor,
         themeSettings,
         setThemeSettings,
+        Profile,
+        setProfile,
+        setChat,
+        setNotif,
+        chat,
+        notif,
       }}
     >
       {children}

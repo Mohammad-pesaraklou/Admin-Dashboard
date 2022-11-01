@@ -1,0 +1,11 @@
+.container {
+  width: 400px;
+  background: rgb(253, 252, 252);
+  height: 470px;
+  position: absolute;
+  top: 80%;
+  right: 1.5%;
+  z-index: 100;
+  border-radius: 25px;
+  box-shadow: -10px 10px 15px #d3d2d2d2;
+}

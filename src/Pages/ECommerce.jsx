@@ -4,7 +4,6 @@ import myBg from '../data/myBg.jpg'
 // components
 import Navbar from '../Components/Navbar';
 import Stacked from './Charts/Stacked';
-import Pie from '../Components/Charts/Pie';
 import LineChart from '../Components/Charts/LineChart';
 import SparkLine from './Charts/SparkLine';
 // icons

@@ -4,7 +4,6 @@ import Navbar from "./Components/Navbar";
 import Area from "./Pages/Charts/Area";
 import Bar from "./Pages/Charts/Bar";
 import Line from "./Pages/Charts/Line";
-import Pie from "./Pages/Charts/Pie";
 import Stacked from "./Pages/Charts/Stacked";
 import Pyramid from "./Pages/Charts/Pyramid";
 import FinancialChart from "./Pages/Charts/FinancialChart";
@@ -93,7 +92,6 @@ function App() {
               <Route path="/line" element={<Line />} />
               <Route path="/area" element={<Area />} />
               <Route path="/bar" element={<Bar />} />
-              <Route path="/pie" element={<Pie />} />
               <Route path="/financial" element={<FinancialChart />} />
               <Route path="/color-mapping" element={<ColorMapping />} />
               <Route path="/pyramid" element={<Pyramid />} />
