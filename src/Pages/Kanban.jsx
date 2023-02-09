@@ -1,4 +1,3 @@
-import React from 'react';
 // syncfusion
 import { KanbanComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-kanban';
 // data

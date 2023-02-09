@@ -24,6 +24,7 @@ const ThemeSettings = () => {
                         <MdOutlineCancel />
                     </button>
                 </div>
+                
                 <div className='flex-col border-t-1 border-color p-4 ml-2'>
                     <p className='text-lg font-semibold'>
                         Theme Options

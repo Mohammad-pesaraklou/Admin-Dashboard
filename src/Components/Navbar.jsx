@@ -6,7 +6,6 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import Chat from './Chat'
-import Cart from './Cart'
 import Notifications from './Notifications'
 import UserProfile from './UserProfile'
 import avatar from '../data/avatar.jpg';
@@ -42,7 +41,7 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        if (screenSize <= 900) {
+        if (screenSize <= 1000) {
             setActiveMenu(false);
         } else {
             setActiveMenu(true);
